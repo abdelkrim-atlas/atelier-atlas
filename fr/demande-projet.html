@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demander un projet | Atelier Atlas</title>
+<meta name="description" content="Décrivez votre projet de menuiserie sur mesure : dimensions, matériaux, services souhaités. Réponse sous 24 à 48h.">
+<link rel="icon" href="../assets/images/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><img src="../assets/images/logo.png" alt="Atelier Atlas"></a>
+    <nav class="mainnav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="fabrication.html">Fabrication</a></li>
+<li><a href="realisations.html">Réalisations</a></li>
+<li><a href="a-propos.html">À propos</a></li>
+<li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <a href="index.html" aria-current="page">FR</a>
+<a href="../es/solicitar-proyecto.html">ES</a>
+      </div>
+      <a href="demande-projet.html" class="nav-cta">Demander un projet</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="ticks" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Demander un projet</h1>
+    <p class="lede">Un formulaire simple mais complet, pour que nous puissions analyser votre demande dès réception.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <form id="project-form">
+      <fieldset>
+        <legend>Vos informations</legend>
+        <div class="field-row">
+          <div class="field"><label>Nom</label><input type="text" name="Nom" required></div>
+          <div class="field"><label>E-mail</label><input type="email" name="E-mail" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Téléphone</label><input type="tel" name="Téléphone"></div>
+          <div class="field"><label>Pays</label><select name="Pays"><option value="France">France</option><option value="Espagne">Espagne</option><option value="Autre">Autre</option></select></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Type de projet</legend>
+        <div class="field"><label>Type de projet</label><select name="Type de projet"><option value="Cuisine">Cuisine</option><option value="Dressing">Dressing</option><option value="Placard">Placard</option><option value="Meuble TV">Meuble TV</option><option value="Bibliothèque">Bibliothèque</option><option value="Bureau">Bureau</option><option value="Meuble de salle de bain">Meuble de salle de bain</option><option value="Mobilier professionnel">Mobilier professionnel</option><option value="Autre">Autre</option></select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Services souhaités</legend>
+        <div class="checkbox-grid"><label class="checkbox-row"><input type="checkbox" name="services" value="📦 Formule Technique (voir Tarifs)">📦 Formule Technique (voir Tarifs)</label><label class="checkbox-row"><input type="checkbox" name="services" value="📦 Formule Complète (voir Tarifs)">📦 Formule Complète (voir Tarifs)</label><label class="checkbox-row"><input type="checkbox" name="services" value="Conception 3D">Conception 3D</label><label class="checkbox-row"><input type="checkbox" name="services" value="Plans techniques">Plans techniques</label><label class="checkbox-row"><input type="checkbox" name="services" value="Liste de débit">Liste de débit</label><label class="checkbox-row"><input type="checkbox" name="services" value="Calcul des matériaux">Calcul des matériaux</label><label class="checkbox-row"><input type="checkbox" name="services" value="Estimation du coût">Estimation du coût</label><label class="checkbox-row"><input type="checkbox" name="services" value="Fabrication">Fabrication</label><label class="checkbox-row"><input type="checkbox" name="services" value="Fabrication + livraison">Fabrication + livraison</label></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Informations sur le projet</legend>
+        <div class="field-row">
+          <div class="field"><label>Largeur (cm)</label><input type="number" name="Largeur (cm)"></div>
+          <div class="field"><label>Hauteur (cm)</label><input type="number" name="Hauteur (cm)"></div>
+        </div>
+        <div class="field"><label>Profondeur (cm)</label><input type="number" name="Profondeur (cm)" style="max-width:200px;"></div>
+        <div class="field"><label>Décrivez votre projet</label><textarea name="Décrivez votre projet"></textarea></div>
+        <div class="field-row">
+          <div class="field"><label>Matériaux souhaités</label>
+            <select name="Matériaux souhaités"><option value="MDF / Mélaminé">MDF / Mélaminé</option><option value="MDF hydrofuge (cuisine/SdB)">MDF hydrofuge (cuisine/SdB)</option><option value="Contreplaqué">Contreplaqué</option><option value="Pin massif (bois rouge)">Pin massif (bois rouge)</option><option value="Chêne massif">Chêne massif</option><option value="Hêtre massif">Hêtre massif</option><option value="Je ne sais pas encore">Je ne sais pas encore</option><option value="Autre">Autre</option></select>
+          </div>
+          <div class="field"><label>Budget approximatif</label><input type="text" name="Budget approximatif"></div>
+        </div>
+        <div class="field"><label>Délai souhaité</label>
+          <select name="Délai souhaité"><option value="3 à 5 jours">3 à 5 jours</option><option value="1 à 2 semaines">1 à 2 semaines</option><option value="Pas d'urgence particulière">Pas d'urgence particulière</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fichiers</legend>
+        <div class="field">
+          <label for="project-files">Sélectionner des fichiers</label>
+          <input type="file" id="project-files" name="Fichiers" multiple accept=".jpg,.jpeg,.png,.pdf">
+        </div>
+        <p class="file-note">Vous pouvez joindre des images, croquis, PDF ou documents techniques (5 fichiers maximum, 10 Mo par fichier). Formats acceptés : JPG, PNG, PDF.</p>
+        <p class="file-note" style="margin-top:8px;">En cliquant sur "Envoyer ma demande", votre messagerie s'ouvrira avec les noms des fichiers choisis dans le message — merci de les joindre manuellement avant l'envoi (ou de les envoyer par WhatsApp), car un simple formulaire ne peut pas les attacher automatiquement.</p>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="../assets/images/logo.png" alt="Atelier Atlas" class="footer-logo-img">
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="fabrication.html">Fabrication</a></li>
+<li><a href="realisations.html">Réalisations</a></li>
+<li><a href="a-propos.html">À propos</a></li>
+<li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informations légales</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+<li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+<li><a href="politique-cookies.html">Politique cookies</a></li>
+<li><a href="conditions-generales.html">Conditions générales</a></li>
+<li><a href="conditions-vente.html">Conditions de vente</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; Atelier Atlas — Abdel Krim May — Tous droits réservés.</span>
+      
+    </div>
+  </div>
+</footer>
+<script src="../assets/script.js"></script>
+
+</body>
+</html>

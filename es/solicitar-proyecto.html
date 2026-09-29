@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar un proyecto | Atelier Atlas</title>
+<meta name="description" content="Describe tu proyecto de carpintería a medida: medidas, materiales, servicios deseados. Respuesta en 24-48h.">
+<link rel="icon" href="../assets/images/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><img src="../assets/images/logo.png" alt="Atelier Atlas"></a>
+    <nav class="mainnav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+<li><a href="servicios.html">Servicios y tarifas</a></li>
+<li><a href="fabricacion.html">Fabricación</a></li>
+<li><a href="proyectos.html">Proyectos</a></li>
+<li><a href="sobre-mi.html">Sobre mí</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <a href="../fr/demande-projet.html">FR</a>
+<a href="index.html" aria-current="page">ES</a>
+      </div>
+      <a href="solicitar-proyecto.html" class="nav-cta">Solicitar un proyecto</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="ticks" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Solicitar un proyecto</h1>
+    <p class="lede">Un formulario sencillo pero completo, para poder analizar tu solicitud en cuanto la recibamos.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <form id="project-form">
+      <fieldset>
+        <legend>Tus datos</legend>
+        <div class="field-row">
+          <div class="field"><label>Nombre</label><input type="text" name="Nombre" required></div>
+          <div class="field"><label>Correo electrónico</label><input type="email" name="Correo electrónico" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Teléfono</label><input type="tel" name="Teléfono"></div>
+          <div class="field"><label>País</label><select name="País"><option value="Francia">Francia</option><option value="España">España</option><option value="Otro">Otro</option></select></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tipo de proyecto</legend>
+        <div class="field"><label>Tipo de proyecto</label><select name="Tipo de proyecto"><option value="Cocina">Cocina</option><option value="Vestidor">Vestidor</option><option value="Armario">Armario</option><option value="Mueble de TV">Mueble de TV</option><option value="Estantería">Estantería</option><option value="Escritorio">Escritorio</option><option value="Mueble de baño">Mueble de baño</option><option value="Mobiliario profesional">Mobiliario profesional</option><option value="Otro">Otro</option></select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Servicios deseados</legend>
+        <div class="checkbox-grid"><label class="checkbox-row"><input type="checkbox" name="services" value="📦 Paquete Técnico (ver Tarifas)">📦 Paquete Técnico (ver Tarifas)</label><label class="checkbox-row"><input type="checkbox" name="services" value="📦 Paquete Completo (ver Tarifas)">📦 Paquete Completo (ver Tarifas)</label><label class="checkbox-row"><input type="checkbox" name="services" value="Diseño 3D">Diseño 3D</label><label class="checkbox-row"><input type="checkbox" name="services" value="Planos técnicos">Planos técnicos</label><label class="checkbox-row"><input type="checkbox" name="services" value="Despiece">Despiece</label><label class="checkbox-row"><input type="checkbox" name="services" value="Cálculo de materiales">Cálculo de materiales</label><label class="checkbox-row"><input type="checkbox" name="services" value="Estimación de coste">Estimación de coste</label><label class="checkbox-row"><input type="checkbox" name="services" value="Fabricación">Fabricación</label><label class="checkbox-row"><input type="checkbox" name="services" value="Fabricación + envío">Fabricación + envío</label></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Información del proyecto</legend>
+        <div class="field-row">
+          <div class="field"><label>Ancho (cm)</label><input type="number" name="Ancho (cm)"></div>
+          <div class="field"><label>Alto (cm)</label><input type="number" name="Alto (cm)"></div>
+        </div>
+        <div class="field"><label>Profundidad (cm)</label><input type="number" name="Profundidad (cm)" style="max-width:200px;"></div>
+        <div class="field"><label>Describe tu proyecto</label><textarea name="Describe tu proyecto"></textarea></div>
+        <div class="field-row">
+          <div class="field"><label>Materiales deseados</label>
+            <select name="Materiales deseados"><option value="MDF / Melamina">MDF / Melamina</option><option value="MDF hidrófugo (cocina/baño)">MDF hidrófugo (cocina/baño)</option><option value="Contrachapado">Contrachapado</option><option value="Pino macizo">Pino macizo</option><option value="Roble macizo">Roble macizo</option><option value="Haya maciza">Haya maciza</option><option value="Aún no lo sé">Aún no lo sé</option><option value="Otro">Otro</option></select>
+          </div>
+          <div class="field"><label>Presupuesto aproximado</label><input type="text" name="Presupuesto aproximado"></div>
+        </div>
+        <div class="field"><label>Plazo deseado</label>
+          <select name="Plazo deseado"><option value="3 a 5 días">3 a 5 días</option><option value="1 a 2 semanas">1 a 2 semanas</option><option value="Sin prisa particular">Sin prisa particular</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Archivos</legend>
+        <div class="field">
+          <label for="project-files">Seleccionar archivos</label>
+          <input type="file" id="project-files" name="Archivos" multiple accept=".jpg,.jpeg,.png,.pdf">
+        </div>
+        <p class="file-note">Puedes adjuntar imágenes, bocetos, PDF o documentos técnicos (máximo 5 archivos, 10 MB por archivo). Formatos aceptados: JPG, PNG, PDF.</p>
+        <p class="file-note" style="margin-top:8px;">Al hacer clic en "Enviar mi solicitud", se abrirá tu correo con los nombres de los archivos elegidos en el mensaje — adjúntalos manualmente antes de enviarlo (o mándalos por WhatsApp), ya que un simple formulario no puede adjuntarlos automáticamente.</p>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Enviar mi solicitud</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="../assets/images/logo.png" alt="Atelier Atlas" class="footer-logo-img">
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+<li><a href="servicios.html">Servicios y tarifas</a></li>
+<li><a href="fabricacion.html">Fabricación</a></li>
+<li><a href="proyectos.html">Proyectos</a></li>
+<li><a href="sobre-mi.html">Sobre mí</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Información legal</h4>
+        <ul>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+<li><a href="politica-privacidad.html">Política de privacidad</a></li>
+<li><a href="politica-cookies.html">Política de cookies</a></li>
+<li><a href="condiciones-generales.html">Condiciones generales</a></li>
+<li><a href="condiciones-venta.html">Condiciones de venta</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; Atelier Atlas — Abdel Krim May — Todos los derechos reservados.</span>
+      
+    </div>
+  </div>
+</footer>
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
