@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Paiement sécurisé | Atelier Atlas</title>
+<!-- DEVELOPER NOTE: Replace YOUR_PAYPAL_CLIENT_ID below with your real PayPal Business Client ID
+     (PayPal Developer Dashboard → Apps & Credentials → your app → Client ID, Live mode). -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR&intent=capture"></script>
+<style>
+  :root{
+    --ink:#211F1B; --paper:#FAF8F3; --beige:#F2EDE3; --wood:#A9764E; --wood-dark:#7C5636;
+    --anthracite:#23241F; --line:rgba(33,31,27,0.14); --green:#166534;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', system-ui, sans-serif; margin:0; min-height:100vh;
+    background:linear-gradient(160deg, var(--beige), var(--paper));
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .card{
+    background:#fff; max-width:460px; width:100%; border-radius:16px;
+    box-shadow:0 20px 60px rgba(35,36,31,0.12); padding:40px 36px; text-align:center;
+    border:1px solid var(--line);
+  }
+  .lock-icon{ font-size:28px; margin-bottom:6px; }
+  h1{ font-size:1.3rem; color:var(--anthracite); margin:0 0 4px; font-weight:700; }
+  .subtitle{ font-size:0.85rem; color:#8a7a64; margin:0 0 28px; }
+  .summary{
+    background:var(--beige); border-radius:12px; padding:20px 22px; margin-bottom:26px; text-align:right;
+  }
+  .summary-row{ display:flex; justify-content:space-between; font-size:0.92rem; margin-bottom:8px; }
+  .summary-row:last-child{ margin-bottom:0; padding-top:10px; border-top:1px dashed var(--line); font-weight:700; font-size:1.1rem; color:var(--wood-dark); }
+  .summary-row span:first-child{ color:#5a4c3c; }
+  #paypal-button-container{ margin-top:4px; min-height:45px; }
+  .secure-note{ font-size:0.75rem; color:#9a8c7a; margin-top:18px; display:flex; align-items:center; justify-content:center; gap:6px; }
+  .success{ display:none; }
+  .success.show{ display:block; }
+  .success-icon{ font-size:48px; color:var(--green); margin-bottom:10px; }
+  .success h2{ color:var(--green); font-size:1.2rem; margin:0 0 10px; }
+  .success p{ color:#463527; font-size:0.92rem; line-height:1.6; margin:0 0 20px; }
+  .download-btn{
+    display:inline-block; background:var(--anthracite); color:#fff; padding:13px 28px;
+    border-radius:8px; text-decoration:none; font-weight:600; font-size:0.95rem;
+  }
+  .error-box{
+    display:none; background:#fef2f2; border:1px solid #fecaca; color:#991b1b;
+    border-radius:8px; padding:12px 16px; font-size:0.85rem; margin-top:16px;
+  }
+  .error-box.show{ display:block; }
+  .logo{ font-family:Georgia, serif; font-weight:700; color:var(--anthracite); font-size:1.1rem; margin-bottom:22px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">Atelier Atlas</div>
+
+  <div id="order-view">
+    <div class="lock-icon">🔒</div>
+    <h1 id="greeting">Finaliser votre commande</h1>
+    <p class="subtitle">Paiement sécurisé via PayPal — carte bancaire acceptée</p>
+
+    <div class="summary">
+      <div class="summary-row"><span>Formule</span><span id="formula-name">—</span></div>
+      <div class="summary-row"><span>Total</span><span id="price-display">—</span></div>
+    </div>
+
+    <div id="paypal-button-container"></div>
+    <div class="error-box" id="error-box">Une erreur est survenue. Merci de réessayer ou de nous contacter directement par e-mail.</div>
+
+    <p class="secure-note">🔒 Paiement traité directement par PayPal — Atelier Atlas ne voit jamais vos coordonnées bancaires.</p>
+  </div>
+
+  <div class="success" id="success-view">
+    <div class="success-icon">✓</div>
+    <h2 id="success-title">Paiement confirmé — merci !</h2>
+    <p id="success-text">Votre règlement a bien été reçu. Un e-mail de confirmation vous a été envoyé.</p>
+    <a href="#" id="download-link" class="download-btn" style="display:none;">📄 Télécharger mon document</a>
+    <p id="fallback-text" style="margin-top:16px; font-size:0.85rem; color:#7a6c5a;">
+      Votre fichier personnalisé vous sera envoyé par e-mail sous peu par Abdel Krim May.
+    </p>
+  </div>
+</div>
+
+<script>
+  /* ---------------------------------------------------------------
+     IMPORTANT — LIS CECI AVANT DE PUBLIER CETTE PAGE :
+
+     Les liens de fichiers ne sont JAMAIS passés dans l'URL envoyée
+     au client (ce serait visible par n'importe qui, payé ou non).
+     Ils sont seulement listés ici, dans le code de la page.
+
+     Ce n'est pas une protection parfaite (quelqu'un de très curieux
+     pourrait lire ce fichier), mais c'est très largement suffisant
+     pour un usage normal, et bien plus sûr que de mettre le lien
+     dans l'URL. Pour les projets à forte valeur, vérifiez toujours
+     le paiement reçu dans votre tableau de bord PayPal avant
+     d'envoyer le fichier final par e-mail.
+     ------------------------------------------------------------- */
+  const FORMULA_FILES = {
+    // 'code_formule': { name: 'Nom affiché', url: 'https://lien-vers-le-fichier.pdf' }
+    technique: { name: "Formule Technique", url: "" },
+    complete: { name: "Formule Complète", url: "" },
+  };
+
+  const TEXT = {
+    fr: {
+      greeting: n => `Bonjour ${n || ''}, finalisons votre commande`,
+      successTitle: "Paiement confirmé — merci !",
+      successText: "Votre règlement a bien été reçu. Un e-mail de confirmation vous a été envoyé.",
+      fallback: "Votre fichier personnalisé vous sera envoyé par e-mail sous peu par Abdel Krim May.",
+      downloadBtn: "📄 Télécharger mon document",
+    },
+    es: {
+      greeting: n => `Hola ${n || ''}, finalicemos tu pedido`,
+      successTitle: "Pago confirmado — ¡gracias!",
+      successText: "Hemos recibido tu pago correctamente. Se te ha enviado un correo de confirmación.",
+      fallback: "Tu archivo personalizado te será enviado por correo en breve por Abdel Krim May.",
+      downloadBtn: "📄 Descargar mi documento",
+    },
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const clientName = params.get('client') || '';
+  const price = parseFloat(params.get('price')) || 0;
+  const formulaCode = params.get('formula') || 'technique';
+  const lang = params.get('lang') === 'es' ? 'es' : 'fr';
+  const t = TEXT[lang];
+
+  document.documentElement.lang = lang;
+  const formulaInfo = FORMULA_FILES[formulaCode] || { name: formulaCode, url: "" };
+
+  document.getElementById('greeting').textContent = t.greeting(clientName);
+  document.getElementById('formula-name').textContent = formulaInfo.name;
+  document.getElementById('price-display').textContent = price.toFixed(2) + ' €';
+  document.getElementById('success-title').textContent = t.successTitle;
+  document.getElementById('success-text').textContent = t.successText;
+  document.getElementById('fallback-text').textContent = t.fallback;
+
+  function showError() {
+    document.getElementById('error-box').classList.add('show');
+  }
+
+  if (window.paypal && price > 0) {
+    paypal.Buttons({
+      style: { layout: 'vertical', color: 'black', shape: 'rect', label: 'pay' },
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            description: formulaInfo.name + (clientName ? ' — ' + clientName : ''),
+            amount: { currency_code: 'EUR', value: price.toFixed(2) }
+          }]
+        });
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function () {
+          document.getElementById('order-view').style.display = 'none';
+          const successView = document.getElementById('success-view');
+          successView.classList.add('show');
+          if (formulaInfo.url) {
+            const dl = document.getElementById('download-link');
+            dl.href = formulaInfo.url;
+            dl.textContent = t.downloadBtn;
+            dl.style.display = 'inline-block';
+            document.getElementById('fallback-text').style.display = 'none';
+          }
+        });
+      },
+      onError: function (err) {
+        console.error('PayPal error:', err);
+        showError();
+      }
+    }).render('#paypal-button-container');
+  } else if (price <= 0) {
+    showError();
+  }
+</script>
+
+</body>
+</html>
